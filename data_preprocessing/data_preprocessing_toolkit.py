@@ -55,7 +55,7 @@ class DataPreprocessingToolkit(object):
         return df[df.length_of_stay <= 21]
 
     @staticmethod
-    def filter_out_low_prices(self, df):
+    def filter_out_low_prices(df):
         """
         Leaves only stays with accommodation price bigger than 50. Smaller prices are considered not reliable
         and likely a mistake of the hotel staff.
