@@ -27,9 +27,6 @@ The original dataset was preprocessed to facilitate the work with data. Anonymiz
 ## Original dataset
  - The original dataset: [hotel-recommender](https://github.com/C7A7A/hotel-recommender)/[data](https://github.com/C7A7A/hotel-recommender/tree/main/data)/[hotel_data](https://github.com/C7A7A/hotel-recommender/tree/main/data/hotel_data)/**hotel_data_original.csv**
 
- Part of **original dataset**
-![Original dataset image](/screenshots/original_dataset.png?raw=true "Original dataset")
-
 
 ## Preprocessed dataset
 
@@ -43,23 +40,23 @@ Part of **interactions preprocessed dataset**
 
 # User Features
 There are three methods that prepare user features
-1. probability method (was already given)
+### 1. probability method (was already given)
 For **each user** for **each feature** it calculates the **probability** of its occurrence in data frame.
 ![Probability method](/screenshots/users_df_prob.png?raw=true "Probability method dataset")
 
-2. Average bucketing method
+### 2. Average bucketing method
 For **each numeric** feature it maps value to **average value** (for instance [50-100] -> 75).
 After that rows are **grouped by user_id** and **mean** is applied on dataframe.
 ![Avg bucketing method](/screenshots/users_df_avg_bucketing.png?raw=true "Avg bucketing method")
 
-3. One hot encoding method
+### 3. One hot encoding method
 Vector of ones and zeroes.
 Data frame is **grouped by user_id** and **1** is given if **feature exists**, otherwise 0.
 ![One hot method](/screenshots/users_df_one_hot.png?raw=true "One hot method")
 
 
 # Item Features (one hot encoding)
-Part of **items_df**:
+Part of **items_df**
 ![Items dataframe image](/screenshots/items_df.png?raw=true "Items dataframe")
 
 # Recommender
@@ -72,16 +69,19 @@ I used 3 models during tuning (GMF, MLP, NeuMF). On average GMF < MLP < NeuMF du
 
 ### Optimizers
 - Adam/AdamW optimizer - "C" charts. Validation loss usually increase after few epochs and it is way bigger than training loss
-- SGD - validation loss usually have the same shape as training loss and decrease similarly
-
 ![Adam](/screenshots/NeuMF_Adam.png?raw=true "Adam chart")
+- SGD - validation loss usually have the same shape as training loss and decrease similarly
 ![SGD](/screenshots/MLP_SGD.png?raw=true "SGD chart")
 
 At first glance, you could come to the conclusion that working with SGD optimizer would be more beneficial, but Adam gave me better results for some reason.
 
 # Results
 I managed to beat both recommenders (Amazon and Netflix) and got 0.2515 HR10 score.
+
+**Best score**
 ![Best results](/screenshots/best_result.png?raw=true "Best result")
+
+**All results**
 ![All results](/screenshots/results.png?raw=true "All results")
 
 Best score parameters:
